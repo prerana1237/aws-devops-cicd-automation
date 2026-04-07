@@ -1,0 +1,310 @@
+i am in that folder
+Initializing the backend...
+Initializing provider plugins...
+- Reusing previous version of hashicorp/aws from the dependency lock file
+- Using previously-installed hashicorp/aws v6.32.1
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+ initailised
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_instance.terrainstance will be created
+  + resource "aws_instance" "terrainstance" {
+      + ami                                  = "ami-019715e0d74f695be"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = (known after apply)
+      + ebs_optimized                        = (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      + force_destroy                        = false
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = (known after apply)
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "t3.micro"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = (known after apply)
+      + monitoring                           = (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_group_id                   = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + region                               = "ap-south-1"
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = (known after apply)
+      + tags                                 = {
+          + "Name" = "cloud1"
+        }
+      + tags_all                             = {
+          + "Name" = "cloud1"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = <<-EOT
+            #!/bin/bash
+            sudo apt update -y
+            sudo apt install apache2 -y
+            sudo systemctl start apache2
+        EOT
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = false
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device (known after apply)
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options (known after apply)
+
+      + network_interface (known after apply)
+
+      + primary_network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device (known after apply)
+
+      + secondary_network_interface (known after apply)
+    }
+
+  # aws_internet_gateway.terraitg will be created
+  + resource "aws_internet_gateway" "terraitg" {
+      + arn      = (known after apply)
+      + id       = (known after apply)
+      + owner_id = (known after apply)
+      + region   = "ap-south-1"
+      + tags     = {
+          + "Name" = "myitg"
+        }
+      + tags_all = {
+          + "Name" = "myitg"
+        }
+      + vpc_id   = (known after apply)
+    }
+
+  # aws_key_pair.terrakey will be created
+  + resource "aws_key_pair" "terrakey" {
+      + arn             = (known after apply)
+      + fingerprint     = (known after apply)
+      + id              = (known after apply)
+      + key_name        = "cloudkey"
+      + key_name_prefix = (known after apply)
+      + key_pair_id     = (known after apply)
+      + key_type        = (known after apply)
+      + public_key      = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE6ITAyyi7vzAiBdAgqzjUvy1Tef8N02NgD9SMEAazaX ubuntu@ip-172-31-42-175"
+      + region          = "ap-south-1"
+      + tags_all        = (known after apply)
+    }
+
+  # aws_route_table.terrroute will be created
+  + resource "aws_route_table" "terrroute" {
+      + arn              = (known after apply)
+      + id               = (known after apply)
+      + owner_id         = (known after apply)
+      + propagating_vgws = (known after apply)
+      + region           = "ap-south-1"
+      + route            = [
+          + {
+              + cidr_block                 = "0.0.0.0/0"
+              + gateway_id                 = (known after apply)
+                # (11 unchanged attributes hidden)
+            },
+        ]
+      + tags_all         = (known after apply)
+      + vpc_id           = (known after apply)
+    }
+
+  # aws_route_table_association.terraasc will be created
+  + resource "aws_route_table_association" "terraasc" {
+      + id             = (known after apply)
+      + region         = "ap-south-1"
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # aws_security_group.terrasec will be created
+  + resource "aws_security_group" "terrasec" {
+      + arn                    = (known after apply)
+      + description            = "Managed by Terraform"
+      + egress                 = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "-1"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 0
+                # (1 unchanged attribute hidden)
+            },
+        ]
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + from_port        = 22
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 22
+                # (1 unchanged attribute hidden)
+            },
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + from_port        = 80
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 80
+                # (1 unchanged attribute hidden)
+            },
+        ]
+      + name                   = (known after apply)
+      + name_prefix            = (known after apply)
+      + owner_id               = (known after apply)
+      + region                 = "ap-south-1"
+      + revoke_rules_on_delete = false
+      + tags                   = {
+          + "Name" = "security"
+        }
+      + tags_all               = {
+          + "Name" = "security"
+        }
+      + vpc_id                 = (known after apply)
+    }
+
+  # aws_subnet.terrsubnet will be created
+  + resource "aws_subnet" "terrsubnet" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "ap-south-1a"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "171.52.0.0/25"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block                                = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = true
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + region                                         = "ap-south-1"
+      + tags                                           = {
+          + "Name" = "mysub"
+        }
+      + tags_all                                       = {
+          + "Name" = "mysub"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # aws_vpc.terravpc will be created
+  + resource "aws_vpc" "terravpc" {
+      + arn                                  = (known after apply)
+      + cidr_block                           = "171.52.0.0/24"
+      + default_network_acl_id               = (known after apply)
+      + default_route_table_id               = (known after apply)
+      + default_security_group_id            = (known after apply)
+      + dhcp_options_id                      = (known after apply)
+      + enable_dns_hostnames                 = true
+      + enable_dns_support                   = true
+      + enable_network_address_usage_metrics = (known after apply)
+      + id                                   = (known after apply)
+      + instance_tenancy                     = "default"
+      + ipv6_association_id                  = (known after apply)
+      + ipv6_cidr_block                      = (known after apply)
+      + ipv6_cidr_block_network_border_group = (known after apply)
+      + main_route_table_id                  = (known after apply)
+      + owner_id                             = (known after apply)
+      + region                               = "ap-south-1"
+      + tags                                 = {
+          + "Name" = "myvpc"
+        }
+      + tags_all                             = {
+          + "Name" = "myvpc"
+        }
+    }
+
+Plan: 8 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + public_dns = (known after apply)
+  + public_ip  = (known after apply)
+aws_vpc.terravpc: Creating...
+aws_key_pair.terrakey: Creating...
+aws_key_pair.terrakey: Creation complete after 0s [id=cloudkey]
+aws_vpc.terravpc: Still creating... [00m10s elapsed]
+aws_vpc.terravpc: Creation complete after 12s [id=vpc-076299833ac59ee29]
+aws_internet_gateway.terraitg: Creating...
+aws_subnet.terrsubnet: Creating...
+aws_security_group.terrasec: Creating...
+aws_internet_gateway.terraitg: Creation complete after 0s [id=igw-0f2c72f95c16e7ba8]
+aws_route_table.terrroute: Creating...
+aws_route_table.terrroute: Creation complete after 1s [id=rtb-00e4e57c5fdddc6da]
+aws_security_group.terrasec: Creation complete after 2s [id=sg-03d3ec6655f34c09c]
+aws_subnet.terrsubnet: Still creating... [00m10s elapsed]
+aws_subnet.terrsubnet: Creation complete after 10s [id=subnet-03145566695b14dd9]
+aws_route_table_association.terraasc: Creating...
+aws_instance.terrainstance: Creating...
+aws_route_table_association.terraasc: Creation complete after 1s [id=rtbassoc-0b2ab51249656de14]
+aws_instance.terrainstance: Still creating... [00m10s elapsed]
+aws_instance.terrainstance: Creation complete after 13s [id=i-0dfc76fbfe756a052]
+
+Apply complete! Resources: 8 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+public_dns = "ec2-43-205-191-156.ap-south-1.compute.amazonaws.com"
+public_ip = "43.205.191.156"
+done
